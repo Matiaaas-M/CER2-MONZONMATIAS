@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Iniciar Sesión</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label>Usuario:</label>
+        <input type="text" name="username" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Contraseña:</label>
+        <input type="password" name="password" class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Entrar</button>
+</form>
+{% endblock %}

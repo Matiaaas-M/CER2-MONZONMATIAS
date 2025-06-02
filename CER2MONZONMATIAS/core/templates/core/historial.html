@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Historial de Solicitudes</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Material</th>
+            <th>Cantidad</th>
+            <th>Fecha estimada</th>
+            <th>Estado</th>
+            <th>Comentario</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in solicitudes %}
+        <tr>
+            <td>{{ s.material.nombre }}</td>
+            <td>{{ s.cantidad }}</td>
+            <td>{{ s.fecha_estimada }}</td>
+            <td>{{ s.get_estado_display }}</td>
+            <td>{{ s.comentario_operario|default:"-" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

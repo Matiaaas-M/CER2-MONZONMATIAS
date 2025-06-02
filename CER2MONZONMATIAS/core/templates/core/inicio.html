@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h1>Bienvenido al sistema de reciclaje</h1>
+<p>Consulta las métricas, registra tus solicitudes o infórmate sobre materiales reciclables.</p>
+
+<hr>
+
+<h3>Métricas generales</h3>
+
+<h5>Solicitudes por mes:</h5>
+<ul>
+    {% for m in solicitudes_por_mes %}
+        <li>Mes {{ m.fecha_estimada__month }}: {{ m.total }} solicitudes</li>
+    {% empty %}
+        <li>No hay solicitudes registradas aún.</li>
+    {% endfor %}
+</ul>
+
+<h5>Materiales más reciclados:</h5>
+<ul>
+    {% for mat in materiales_mas_comunes %}
+        <li>{{ mat.material__nombre }}: {{ mat.total }} solicitudes</li>
+    {% empty %}
+        <li>No hay materiales registrados aún.</li>
+    {% endfor %}
+</ul>
+
+<h5>Promedio de cantidad por solicitud completada:</h5>
+<p>{{ tiempo_promedio.promedio|default:"0"|floatformat:2 }}</p>
+{% endblock %}

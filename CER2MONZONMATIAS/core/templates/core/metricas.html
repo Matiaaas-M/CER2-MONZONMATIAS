@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Métricas Generales</h2>
+
+<h4>Solicitudes por mes:</h4>
+<ul>
+    {% for m in solicitudes_por_mes %}
+        <li>Mes {{ m.fecha_estimada__month }}: {{ m.total }} solicitudes</li>
+    {% endfor %}
+</ul>
+
+<h4>Materiales más reciclados:</h4>
+<ul>
+    {% for mat in materiales_mas_comunes %}
+        <li>{{ mat.material__nombre }}: {{ mat.total }} solicitudes</li>
+    {% endfor %}
+</ul>
+
+<h4>Promedio de cantidad por solicitud completada:</h4>
+<p>{{ tiempo_promedio.promedio|floatformat:2 }}</p>
+{% endblock %}
